@@ -7,11 +7,15 @@ var handleNoGeolocation;
 var pos;
 var infowindow;
 var specifiedOrDefaultDestination;
+var timeToDest;
+var timeToReturn;
+var whenToHeadBack;
+var tranformRouteDuration;
 
 function initialize() {
   // Instantiate a directions service.
   directionsService = new google.maps.DirectionsService();
-
+  
   // Create a map and center it on Manhattan.
   var manhattan = new google.maps.LatLng(40.7711329, -73.9741874);
   
@@ -78,9 +82,14 @@ function calcRoute() {
   // Route the directions and pass the response to a
   // function to create markers for each step.
   directionsService.route(request, function(response, status) {
+    // console.log(response.routes[0].legs[0].duration.text);
+    timeToDest = response.routes[0].legs[0].duration.text;
     if (status == google.maps.DirectionsStatus.OK) {
-      var warnings = document.getElementById('warnings_panel');
-      warnings.innerHTML = '<b>' + response.routes[0].warnings + '</b>';
+      // var warnings = document.getElementById('warnings_panel');
+      // warnings.innerHTML = '<b>' + response.routes[0].warnings + '</b>';
+      // call whenToHeadBack after calcRoute has finished so that timeToDest variable is defined::
+      // console.log(timeToDest);
+      tranformRouteDuration();
       directionsDisplay.setDirections(response);
       showSteps(response);
     }
@@ -115,24 +124,61 @@ function attachInstructionText(marker, text) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-
+// this function does the magic of seeing if you should head back
 // adding button, input text, and check box SHTUFF:::::::::::
 
 $('#newDest').change(function(){
   $('#theirNewDest').toggle();
-  console.log('change happened on checkbox');
+  // console.log('change happened on checkbox');
+  // console.log(timeToReturn);
 });
 
 $('#iAmWalking').on('click', function(e){
   e.preventDefault();
+  var hours = new Date().getHours();
+  var minutes = new Date().getMinutes();
+  var currentHoursMinutes = hours*60+minutes;
+  var usersTime = $('#timeToReturn').val().split(':');
+  var usersHours = parseInt(usersTime[0]);
+  var usersMinutes = parseInt(usersTime[1]);
+  timeToReturn = parseInt(usersTime[0])*60 + parseInt(usersTime[1]);
+
+  console.log(timeToReturn-currentHoursMinutes);
+
+  var routeTotal;
+  tranformRouteDuration = function(){
+    var routeDuration = timeToDest.split(' ').filter(function(elem){
+        if(elem !== 'hours' && elem !== 'hour' && elem !== 'mins'){
+          return elem;
+        }
+      });
+    if(routeDuration.length===2){
+      // mult hours by 60
+      var routeHours = parseInt(routeDuration[0])*60;
+      var routeMinutes = parseInt(routeDuration[1]);
+      routeTotal = routeHours + routeMinutes;
+    }
+    else{
+      // just minutes to work with.
+      routeTotal = parseInt(routeDuration[0]);
+    }
+    console.log(routeTotal);
+    whenToHeadBack();
+  };
+
+  whenToHeadBack = function(){
+    if(routeTotal >= timeToReturn-currentHoursMinutes){
+      console.log('Time To Return');
+    }
+    console.log('line 151', timeToDest);
+  };
+
   if($('#newDest:checked').val()){
 
     specifiedOrDefaultDestination = $('#theirNewDest').val();
-    calcRoute();
-    // console.log('btn worked');
-  }
-  else{
-    console.log('Same Dest Selected, go walk!!')
+    // uncomment this calcRoute call to see route when dest is dif than home.
     // calcRoute();
   }
+  calcRoute();
+  
 });

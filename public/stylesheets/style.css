@@ -27,3 +27,7 @@ a {
 #warnings_panel{
   display: none;
 }
+
+.adp-warnbox{
+  display: none;
+}
