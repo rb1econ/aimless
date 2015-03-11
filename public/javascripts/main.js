@@ -169,8 +169,8 @@ $('#iAmWalking').on('click', function(e){
   whenToHeadBack = function(){
     if(routeTotal >= timeToReturn-currentHoursMinutes){
       console.log('Time To Return');
+      $('h1').html('Take Aim!')
     }
-    console.log('line 151', timeToDest);
   };
 
   if($('#newDest:checked').val()){
