@@ -8,10 +8,8 @@ block content
       input(type='checkbox', id='newDest')
       |  A new place
       br
+      input(type="text", placeholder="Your Destination...", id="theirNewDest")
       button(class='btn btn-success col-sm-12', id="iAmWalking") Going for an Aimless Walk?
-      b End
-      select#end(onchange='calcRoute();')
-        option(value=start) Same As Start
-        option(type="text", value='cheeseman park denver, co 80218') Cheese
-    #map-canvas.col-xs-10
+    #map-canvas.col-xs-12
+    #directionsPanel.col-xs-12
     #warnings_panel(style='width:100%;height:10%;text-align:center')

@@ -5,6 +5,8 @@ var stepDisplay;
 var markerArray = [];
 var handleNoGeolocation;
 var pos;
+var infowindow;
+var specifiedOrDefaultDestination;
 
 function initialize() {
   // Instantiate a directions service.
@@ -17,10 +19,10 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-      var infowindow = new google.maps.InfoWindow({
+      infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'Location found using HTML5. Accuracy = '+position.coords.accuracy+'m'
+        content: 'Here is where we will take you back to. Accuracy = '+position.coords.accuracy+'m'
       });
 
       map.setCenter(pos);
@@ -40,12 +42,16 @@ function initialize() {
 
   // Create a renderer for directions and bind it to the map.
   var rendererOptions = {
-    map: map
+    map: map,
+    // InfoWindow: infowindow,
+    // panel: '#directions'
+    // draggable: true
   }
   directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
   // Instantiate an info window to hold step text.
   stepDisplay = new google.maps.InfoWindow();
+  directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 }
 
 function calcRoute() {
@@ -62,7 +68,7 @@ function calcRoute() {
   // a DirectionsRequest using WALKING directions.
   // var start = document.getElementById('start').value;
   start = pos;
-  var end = document.getElementById('end').value;
+  var end = specifiedOrDefaultDestination;
   var request = {
       origin: start,
       destination: end,
@@ -110,11 +116,23 @@ function attachInstructionText(marker, text) {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-// adding button and check box SHTUFF:::::::::::
+// adding button, input text, and check box SHTUFF:::::::::::
+
+$('#newDest').change(function(){
+  $('#theirNewDest').toggle();
+  console.log('change happened on checkbox');
+});
 
 $('#iAmWalking').on('click', function(e){
   e.preventDefault();
   if($('#newDest:checked').val()){
-    // display input box person puts address into.
+
+    specifiedOrDefaultDestination = $('#theirNewDest').val();
+    calcRoute();
+    // console.log('btn worked');
+  }
+  else{
+    console.log('Same Dest Selected, go walk!!')
+    // calcRoute();
   }
 });

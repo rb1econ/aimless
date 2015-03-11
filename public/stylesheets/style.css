@@ -8,8 +8,8 @@ a {
 }
 
 #panel {
-  height: 80%;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -19,4 +19,11 @@ a {
   width: 500px;
   margin: 0;
   padding: 0;
+}
+
+#theirNewDest{
+  display: none;
+}
+#warnings_panel{
+  display: none;
 }
