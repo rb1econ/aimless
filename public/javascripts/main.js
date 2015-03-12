@@ -16,9 +16,6 @@ function initialize() {
   // Instantiate a directions service.
   directionsService = new google.maps.DirectionsService();
   
-  // Create a map and center it on Manhattan.
-  var manhattan = new google.maps.LatLng(40.7711329, -73.9741874);
-  
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -143,7 +140,7 @@ $('#iAmWalking').on('click', function(e){
   var usersMinutes = parseInt(usersTime[1]);
   timeToReturn = parseInt(usersTime[0])*60 + parseInt(usersTime[1]);
 
-  console.log(timeToReturn-currentHoursMinutes);
+  // console.log(timeToReturn-currentHoursMinutes);
 
   var routeTotal;
   tranformRouteDuration = function(){
@@ -179,6 +176,11 @@ $('#iAmWalking').on('click', function(e){
     // uncomment this calcRoute call to see route when dest is dif than home.
     // calcRoute();
   }
-  calcRoute();
+
+  // TRIAL: SEND LATLNG TO SERVER WITH AJAX
+  $.get('/directions/'+pos, function(data){
+    console.log('client Data: ', data);
+  });
+  // calcRoute();
   
 });
