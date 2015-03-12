@@ -4,7 +4,6 @@ var model = require('../models/model.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log('model::::::::', model);
   res.render('index', { title: 'Aimless...', model: model });
 });
 
