@@ -176,7 +176,7 @@ $('#iAmWalking').on('click', function(e){
    
   // }
   // TRIAL: SEND POST REQUEST WITH TIME AND DESTINATION
-  $.post('/directions', timeDestObj, function(dataFromServer){
+  $.post('/directions/initialPost', timeDestObj, function(dataFromServer){
     console.log('dataFromServer POST AJAX: ', dataFromServer);
   });
   // TRIAL: SEND LATLNG TO SERVER WITH AJAX
@@ -184,6 +184,6 @@ $('#iAmWalking').on('click', function(e){
   
 });
 // THIS FUNCTION NEEDS TO RUN EVERY 60 SECONDS.
-  $.get('/directions/'+pos, function(data){
-    console.log('client Data: ', data);
-  });
+  // $.get('/directions/'+pos, function(data){
+  //   console.log('client Data: ', data);
+  // });

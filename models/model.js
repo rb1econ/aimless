@@ -6,53 +6,62 @@ var markerArray = [];
 var handleNoGeolocation;
 var pos;
 var infowindow;
-var specifiedOrDefaultDestination;
 var timeToDest;
 var timeToReturn;
 var whenToHeadBack;
 var tranformRouteDuration;
+var destination;
+
+var dataTransfer = function(timeDestObj){
+  timeToReturn = timeDestObj.timeToReturn;
+  destination = timeDestObj.destination;
+  // console.log('LOGGING FROM MODEL JS timeToReturn:: ', timeToReturn, 'destination:: ', destination);
+};
 
 
 var modelFXN = function(){
+  console.log('modelFXN was called');
   function initialize() {
   // Instantiate a directions service.
-  directionsService = new google.maps.DirectionsService();
+    directionsService = new google.maps.DirectionsService();
 
-    var mapOptions = {
-      zoom: 13,
-      center: pos
-    }
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    // var mapOptions = {
+    //   zoom: 13,
+    //   center: pos
+    // }
+    // map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    // Create a renderer for directions and bind it to the map.
-    var rendererOptions = {
-      map: map,
-      // InfoWindow: infowindow,
-      // panel: '#directions'
-      // draggable: true
-    }
-    directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
+    // // Create a renderer for directions and bind it to the map.
+    // var rendererOptions = {
+    //   map: map,
+    //   // InfoWindow: infowindow,
+    //   // panel: '#directions'
+    //   // draggable: true
+    // }
+    // directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
-    // Instantiate an info window to hold step text.
-    stepDisplay = new google.maps.InfoWindow();
-    directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+    // // Instantiate an info window to hold step text.
+    // stepDisplay = new google.maps.InfoWindow();
+    // directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+    calcRoute();
   }
-
+  initialize();
   function calcRoute() {
 
     // First, remove any existing markers from the map.
-    for (var i = 0; i < markerArray.length; i++) {
-      markerArray[i].setMap(null);
-    }
+    // for (var i = 0; i < markerArray.length; i++) {
+    //   markerArray[i].setMap(null);
+    // }
 
-    // Now, clear the array itself.
-    markerArray = [];
+    // // Now, clear the array itself.
+    // markerArray = [];
 
     // Retrieve the start and end locations and create
     // a DirectionsRequest using WALKING directions.
     // var start = document.getElementById('start').value;
     start = pos;
-    var end = specifiedOrDefaultDestination;
+    var end = destination;
     var request = {
         origin: start,
         destination: end,
@@ -68,10 +77,11 @@ var modelFXN = function(){
         // var warnings = document.getElementById('warnings_panel');
         // warnings.innerHTML = '<b>' + response.routes[0].warnings + '</b>';
         // call whenToHeadBack after calcRoute has finished so that timeToDest variable is defined::
-        // console.log(timeToDest);
+        console.log('timeToDest FROM SERVER::', timeToDest);
         tranformRouteDuration();
-        directionsDisplay.setDirections(response);
-        showSteps(response);
+        // uncomment the two following lines whne ready to display map and directions. 
+        // directionsDisplay.setDirections(response);
+        // showSteps(response);
       }
     });
   }
@@ -143,17 +153,10 @@ var modelFXN = function(){
       // $('h1').html('Take Aim!')
     }
   };
-
-  // if($('#newDest:checked').val()){
-
-  //   specifiedOrDefaultDestination = $('#theirNewDest').val();
-  //   // uncomment this calcRoute call to see route when dest is dif than home.
-  //   // calcRoute();
-  // }
-
-  // calcRoute();
 };
 
 
-var model = modelFXN();
-module.exports = model;
+module.exports = {
+  modelFXN: modelFXN,
+  dataTransfer: dataTransfer
+}
