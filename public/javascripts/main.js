@@ -12,6 +12,44 @@ var timeToReturn;
 var whenToHeadBack;
 var tranformRouteDuration;
 var refreshIntervalId;
+
+// THIS FUNCTION NEEDS TO RUN EVERY 60 SECONDS. - change setInterval to 60,000ms
+var everyMinute = function(){
+
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      pos = '('+position.coords.latitude+', '+ position.coords.longitude+')';
+
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+
+  $.post('/directions', timeDestObj, function(dataFromServer){
+    console.log('client Data: ', dataFromServer);
+  });
+
+  // callEveryMinute();
+};
+var callEveryMinute = function(){
+  refreshIntervalId = setInterval(everyMinute, 3000);
+  console.log('interval ID', refreshIntervalId);
+};
+
+// when it's time to head back, call this function to stop poling the maps api.
+// clearInterval(refreshIntervalId);
+
+$('#newDest').change(function(){
+  $('#theirNewDest').toggle();
+  // console.log('change happened on checkbox');
+  // console.log(timeToReturn);
+});
+
+$('#iAmWalking').on('click', function(e){
+  e.preventDefault();
   
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -25,45 +63,18 @@ var refreshIntervalId;
     handleNoGeolocation(false);
   }
 
-  
-// THIS FUNCTION NEEDS TO RUN EVERY 60 SECONDS. - change setInterval to 60,000ms
-var everyMinute = function(){
-  $.get('/directions/'+pos, function(data){
-    console.log('client Data: ', data);
-  });
-  // callEveryMinute();
-};
-var callEveryMinute = function(){
-  refreshIntervalId = setInterval(everyMinute, 7000);
-  console.log('interval ID',refreshIntervalId);
-};
-
-// when it's time to head back, call this function to stop poling the maps api.
-// clearInterval(refreshIntervalId);
-
-
-
-
-
-$('#newDest').change(function(){
-  $('#theirNewDest').toggle();
-  // console.log('change happened on checkbox');
-  // console.log(timeToReturn);
-});
-
-$('#iAmWalking').on('click', function(e){
-  e.preventDefault();
   var usersTime = $('#timeToReturn').val().split(':');
   var usersHours = parseInt(usersTime[0]);
   var usersMinutes = parseInt(usersTime[1]);
   timeToReturn = parseInt(usersTime[0])*60 + parseInt(usersTime[1]);
 
-    $('#newDest:checked').val() ? specifiedOrDefaultDestination = $('#theirNewDest').val() : specifiedOrDefaultDestination = pos;
+  $('#newDest:checked').val() ? specifiedOrDefaultDestination = $('#theirNewDest').val() : specifiedOrDefaultDestination = pos;
 
-    var timeDestObj = {
-      timeToReturn: timeToReturn,
-      destination: specifiedOrDefaultDestination
-    }
+  timeDestObj = {
+    pos: pos,
+    timeToReturn: timeToReturn,
+    dst: specifiedOrDefaultDestination
+  }
   
   // TRIAL: SEND POST REQUEST WITH TIME AND DESTINATION
   $.post('/initialPost', timeDestObj, function(dataFromServer){
@@ -73,6 +84,3 @@ $('#iAmWalking').on('click', function(e){
   callEveryMinute();
   
 });
-
-
-

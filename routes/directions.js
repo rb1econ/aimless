@@ -1,16 +1,26 @@
 var express = require('express');
 var router = express.Router();
 var model = require('../models/model.js');
+var checkHeadBack = require('../models/checkHeadBack.js');
 
 
-router.get('/:pos', function(req, res){
-  console.log('REQ PARAMS POS::::',req.params.pos);
-  model.dataTransferLatLng(req.params.pos);
-  // console.log('routeTotal:::::::', model.routeTotal);
-  // console.log(model.whenToHeadBack());
-  // if(model.whenToHeadBack()){return res.send('TIME TO GO TO DESTINATION');}
-  // else{res.send('YOOOOOOOO, directions route engaged::', model.headBack);}
-  res.send('hey')
+router.post('/', function(req, res){
+  checkHeadBack(req.body, function(err, headBack){
+    if(err){res.send('sorry there was an error');}
+    else{res.send(headBack);}
+  });
+  // console.log('REQ PARAMS POS::::',req.params.pos);
+  // model.dataTransferLatLng(req.params.pos);
+  // var functionThatLogs = function(){
+  //   console.log('model.headBack::::::::::: ', model.headBack());
+  // };
+  // var timeOutId = setTimeout(functionThatLogs, 3000);
+  // console.log(model);
+  // // console.log('routeTotal:::::::', model.routeTotal);
+  // // console.log('model.headBack::::::::::: ', model.headBack);
+  // // if(model.headBack){return res.send('TIME TO GO TO DESTINATION');}
+  // // else{res.send('YOOOOOOOO, directions route engaged::'}
+  // res.send('hey');
 });
 
 module.exports = router;
