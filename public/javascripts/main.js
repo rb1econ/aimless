@@ -50,9 +50,10 @@ $('#newDest').change(function(){
 
 $('#iAmWalking').on('click', function(e){
   e.preventDefault();
-  
+
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
+      specifiedOrDefaultDestination = '('+position.coords.latitude+', '+ position.coords.longitude+')';
       pos = '('+position.coords.latitude+', '+ position.coords.longitude+')';
 
     }, function() {
@@ -63,12 +64,14 @@ $('#iAmWalking').on('click', function(e){
     handleNoGeolocation(false);
   }
 
+  // reassign specifiedOrDefaultDestination if box is checked.
+  if($('#newDest:checked').val()){specifiedOrDefaultDestination = $('#theirNewDest').val()}
+
   var usersTime = $('#timeToReturn').val().split(':');
   var usersHours = parseInt(usersTime[0]);
   var usersMinutes = parseInt(usersTime[1]);
   timeToReturn = parseInt(usersTime[0])*60 + parseInt(usersTime[1]);
 
-  $('#newDest:checked').val() ? specifiedOrDefaultDestination = $('#theirNewDest').val() : specifiedOrDefaultDestination = pos;
 
   timeDestObj = {
     pos: pos,
