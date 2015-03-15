@@ -123,27 +123,29 @@ $('#iAmWalking').on('click', function(e){
  
 });
 
+// Everything below is google maps stuff::::::::::::::::::::::::::::::::::::::
 function initialize() {
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   // Instantiate a directions service.
   directionsService = new google.maps.DirectionsService();
-    var mapOptions = {
-      zoom: 10,
-      center: start
-    }
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  var mapOptions = {
+    zoom: 10,
+    center: start
+  }
 
-    // Create a renderer for directions and bind it to the map.
-    var rendererOptions = {
-      map: map,
-      // InfoWindow: infowindow,
-      // panel: '#directions'
-      // draggable: true
-    }
-    directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
+  // Create a renderer for directions and bind it to the map.
+  var rendererOptions = {
+    map: map,
+    // InfoWindow: infowindow,
+    // panel: '#directions'
+    // draggable: true
+  }
+  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
-    // Instantiate an info window to hold step text.
-    stepDisplay = new google.maps.InfoWindow();
-    directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+  // Instantiate an info window to hold step text.
+  stepDisplay = new google.maps.InfoWindow();
+  directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+  calcRoute();
 }
 
 function calcRoute() {
