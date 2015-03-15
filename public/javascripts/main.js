@@ -51,6 +51,7 @@ var everyMinute = function(){
       if(dataFromServer){
         // google.maps.event.addDomListener(window, 'load', 
           initialize();
+          clearInterval(refreshIntervalId);
           // );
         console.log('Time to Return!!!!!!', dataFromServer);
       }

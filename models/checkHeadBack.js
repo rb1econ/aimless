@@ -38,6 +38,8 @@ module.exports = function(data, callBackFxn){
       var minutes = new Date().getMinutes();
       var currentHoursMinutes = hours*60+minutes;
 
+      // if statement to solve problem of walks starting before midnight and ending after.
+      if(timeToReturn<=currentHoursMinutes){timeToReturn+=1440}
       var shouldGoBack = routeTotal >= timeToReturn-currentHoursMinutes;
       console.log('routeTotal ', routeTotal, 'timeToReturn', timeToReturn, 'currentHoursMinutes', currentHoursMinutes);
       callBackFxn(null, shouldGoBack);
