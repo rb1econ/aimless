@@ -67,12 +67,18 @@ var everyMinute = function(){
   var nextToRun = function(){
     console.log('The nextToRun ran.')
     var deferred = Q.defer();
-    console.log('pos', pos);
+    // console.log('pos', pos);
+    var hours = new Date().getHours();
+    var minutes = new Date().getMinutes();
+    var currentHoursMinutes = hours*60+minutes;
+
     userDataObj = {
       pos: pos,
       timeToReturn: timeToReturn,
-      dst: specifiedOrDefaultDestination
+      dst: specifiedOrDefaultDestination,
+      currentHoursMinutes: currentHoursMinutes
     }
+
     $.post('/directions', userDataObj, function(dataFromServer){
       console.log('dataFromServer', dataFromServer);
       if(dataFromServer){
