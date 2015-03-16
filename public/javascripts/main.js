@@ -16,6 +16,32 @@ var refreshIntervalId;
 var userDataObj;
 var loadTheMap;
 var start;
+var stopVibration;
+
+
+
+var makeVibrate = function(){
+  navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+  
+  if (navigator.vibrate) {
+    console.log('vibrate if entered, navigator.vibrate= ', navigator.vibrate);
+    var actualVibration = function(){
+      navigator.vibrate(1000)
+    }
+    stopVibration = setInterval(actualVibration, 1500);
+  }
+  else{
+    var visualVibration = function(){
+      $('#panel').prepend('<button class="btn btn-danger">Vibration Simulation ;)</button>')
+    };
+    stopVibration = setInterval(visualVibration, 2000);
+  }
+  $('#panel').on('click', '#iAmReturning', function(){
+    clearInterval(stopVibration);
+    console.log('iAmReturning btn worked!!')
+    // vibrating = false;
+  });
+};
 
 // THIS FUNCTION NEEDS TO RUN EVERY 60 SECONDS. - change setInterval to 60,000ms
 var everyMinute = function(){
@@ -48,23 +74,13 @@ var everyMinute = function(){
       dst: specifiedOrDefaultDestination
     }
     $.post('/directions', userDataObj, function(dataFromServer){
+      console.log('dataFromServer', dataFromServer);
       if(dataFromServer){
-        var vibrating = true;
-        initialize();
-        clearInterval(refreshIntervalId);
         // make phone vibrate here:::::
-        $('h1').append('<button class="btn btn-primary" id="iAmReturning"');
-        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-         
-        if (navigator.vibrate) {
-            while(vibrating){
-              navigator.vibrate([1000, 500, 1000])
-            }
-
-        }
-        $('#iAmReturning').on('click', function(){
-          vibrating = false;
-        });
+        initialize();
+        makeVibrate();
+        clearInterval(refreshIntervalId);
+        $('#panel').prepend('<button class="btn btn-primary" id="iAmReturning"> (: I am returning :)</button>');
 
         console.log('Time to Return!!!!!!', dataFromServer);
       }
