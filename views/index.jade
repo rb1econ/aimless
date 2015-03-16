@@ -4,6 +4,11 @@ block content
   h1= title
   p Welcome to #{title}
   .row
+    div.col-sm-12 Sign in to store your walks and see how much area you've explored!
+      form(action="/auth/login", method="post")
+        input(type="email", name="email", placeholder="email")
+        input(type="password", name="password", placeholder="Password")
+        input(class="btn btn-primary",type="submit")
     div#panel.col-xs-12
       input(type="time", id="timeToReturn", required)
       input(type='checkbox', id='newDest')

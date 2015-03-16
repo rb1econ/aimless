@@ -49,10 +49,23 @@ var everyMinute = function(){
     }
     $.post('/directions', userDataObj, function(dataFromServer){
       if(dataFromServer){
-        // google.maps.event.addDomListener(window, 'load', 
-          initialize();
-          clearInterval(refreshIntervalId);
-          // );
+        var vibrating = true;
+        initialize();
+        clearInterval(refreshIntervalId);
+        // make phone vibrate here:::::
+        $('h1').append('<button class="btn btn-primary" id="iAmReturning"');
+        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+         
+        if (navigator.vibrate) {
+            while(vibrating){
+              navigator.vibrate([1000, 500, 1000])
+            }
+
+        }
+        $('#iAmReturning').on('click', function(){
+          vibrating = false;
+        });
+
         console.log('Time to Return!!!!!!', dataFromServer);
       }
       else{console.log('dataFromServer',dataFromServer);}
