@@ -119,6 +119,7 @@ $('#newDest').change(function(){
 
 $('#iAmWalking').on('click', function(e){
   e.preventDefault();
+  $(this).css("display", "none");
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {

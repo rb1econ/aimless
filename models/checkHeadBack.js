@@ -23,9 +23,8 @@ transformRouteDuration = function(timeToDest){
 
 module.exports = function(data, callBackFxn){
   var timeToReturn = data.timeToReturn;
-  // uncomment when client is sending up their time:::v;v;v;v;v;
   var currentHoursMinutes = data.currentHoursMinutes;
-  // console.log("data", data, "data.dst", data.dst);
+  // console.log("data", data);
   request('http://maps.googleapis.com/maps/api/directions/json?origin='+data.pos+'&destination='+data.dst+'&mode=walking', function(error, response, body){
     if(error){console.log('ERROR GETTING DIRECTIONS FROM GOOGLE')}
     // console.log('body of response from google api::: ', body);
@@ -34,10 +33,6 @@ module.exports = function(data, callBackFxn){
     var timeToDest = responseBodyFromGoogleParsed.routes[0].legs[0].duration.text;
 
     var routeTotal = transformRouteDuration(timeToDest);
-
-    // var hours = new Date().getHours();
-    // var minutes = new Date().getMinutes();
-    // var currentHoursMinutes = hours*60+minutes;
 
     // if statement to solve problem of walks starting before midnight and ending after.
     // console.log('currentHoursMinutes B4 IF :', currentHoursMinutes);
