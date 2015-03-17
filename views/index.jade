@@ -20,8 +20,8 @@ block content
     #directionsPanel.col-xs-12
     #warnings_panel(style='width:100%;height:10%;text-align:center')
     #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-      .modal-dialog
-        .modal-content
+      #phone.modal-dialog
+        #innerModalDiv.modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
@@ -29,5 +29,3 @@ block content
           .modal-body
             | IT'S VIBRATING
           .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
