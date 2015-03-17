@@ -67,7 +67,10 @@ var everyMinute = function(){
         handleNoGeolocation(true);
       });
     } else {
-      pos = 'denver, co'
+      pos = 'denver, co';
+      deferred.reject();
+      alert('Please allow the browser to get your location, thanks');
+
       // Browser doesn't support Geolocation
       handleNoGeolocation(false);
     }
@@ -121,6 +124,9 @@ var callEveryMinute = function(){
 
 // when it's time to head back, call this function to stop poling the maps api.
 // clearInterval(refreshIntervalId);
+// $('#panel').on('click', '#newDestBtn', function(){
+//   $('#newDest').prop("checked", "checked");
+// });
 
 $('#newDest').change(function(){
   $('#theirNewDest').toggle();
@@ -170,6 +176,7 @@ $('#iAmWalking').on('click', function(e){
   callEveryMinute();
  
 });
+
 
 // Everything below is google maps stuff::::::::::::::::::::::::::::::::::::::
 function initialize() {

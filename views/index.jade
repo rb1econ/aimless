@@ -1,39 +1,52 @@
 extends layout
 
 block content
-  .row
-    #logo
-      img(src='../images/Aimless.svg', alt='Aimless', class="col-xs-12")
-    p.col-xs-10 Going for an Aimless Walk? Simply select the time you need to be back by and we'll let you know when and how to go back.
-  .row
-    // div.col-sm-12 Sign in to store your walks and see how much area you've explored!
-    //   form(action="/auth/login", method="post")
-    //     input(type="email", name="email", placeholder="email")
-    //     input(type="password", name="password", placeholder="Password")
-    //     input(class="btn btn-primary",type="submit")
-    div#panel.col-xs-12
-      input(type="time", id="timeToReturn", required)
-      input(type='checkbox', id='newDest')
-      |  I would like to end up at new place
-      br
-      input(type="text", placeholder="Your Destination...", id="theirNewDest")
-      button(class='btn btn-success col-sm-12', id="iAmWalking") Going for an Aimless Walk?
-    #map-canvas.col-xs-12
-    #directionsPanel.col-xs-12
-    #warnings_panel(style='width:100%;height:10%;text-align:center')
-    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-      #phone.modal-dialog
-        #innerModalDiv.modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
-            h4#myModalLabel.modal-title This is your phone:
-          .modal-body
-            | IT'S VIBRATING :)
-            br
-            br
-            | YOU'RE NO LONGER AIMLESS 
-            br
-            br
-            | TAKE AIM FOR YOUR DESTINATION!!!
-          .modal-footer
+  .container
+    .row
+      #logo.center-block
+        img(src='../images/Aimless.svg', alt='Aimless', class="col-xs-12 logo")
+  .container
+    .row
+      p.col-xs-12 Going for an Aimless Walk? Simply select the time you need to be back by and we'll let you know when and how to go back.
+    
+      // div.col-sm-12 Sign in to store your walks and see how much area you've explored!
+      //   form(action="/auth/login", method="post")
+      //     input(type="email", name="email", placeholder="email")
+      //     input(type="password", name="password", placeholder="Password")
+      //     input(class="btn btn-primary",type="submit")
+    .row
+      div#panel
+        input(type="time", id="timeToReturn", required, class="col-xs-4")
+        .col-xs-4.btnDiv
+          button.btn.btn-primary#newDestBtn
+            label(for="newDest") 
+              | Click to end up somewhere other
+              br
+              | than where you are now
+              input(type='checkbox', id='newDest')
+        .col-xs-4
+          input(type="text", placeholder="Your Destination...", id="theirNewDest")
+    .row  
+      button(class='btn btn-success col-xs-12', id="iAmWalking") I'm ready to get lost -maybe even lose myself!
+    .row
+      #map-canvas.col-xs-12
+    .row
+      #directionsPanel.col-xs-12
+    .row
+      #warnings_panel(style='width:100%;height:10%;text-align:center')
+      #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        #phone.modal-dialog
+          #innerModalDiv.modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#myModalLabel.modal-title This is your phone:
+            .modal-body
+              | IT'S VIBRATING :)
+              br
+              br
+              | YOU'RE NO LONGER AIMLESS 
+              br
+              br
+              | TAKE AIM FOR YOUR DESTINATION!!!
+            .modal-footer

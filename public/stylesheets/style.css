@@ -1,14 +1,34 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Comic-Sans", serif;
+  text-align: center;
 }
 
 a {
   color: #00B7FF;
 }
+#panel button label{
+  cursor: pointer;
+  /*float: left;*/
+  display: block;
+  padding: 5px 10px;
+  margin: 0;
+}
+#panel button {
+  vertical-align: middle;
+  text-align: center;
+}
+
+#panel button label input {
+  display: none;
+}
 
 .row {
-  width: 80%;
+  
+}
+
+.btnDiv{
+
 }
 
 #panel {
@@ -64,6 +84,21 @@ a {
   height: 630px;
   width: 360px;
 }
-#logo{
+.logo{
   margin: 0 auto;
+}
+#newDest{
+  height: 30px;
+  width: 30px;
+}
+
+input{
+  font-size: 30px;
+}
+
+#iAmWalking{
+  width: 100%;
+}
+#newDestBtn{
+  padding: 0;
 }
