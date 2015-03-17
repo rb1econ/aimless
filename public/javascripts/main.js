@@ -22,9 +22,9 @@ var stopVibration;
 
 var makeVibrate = function(){
   navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-  
+  console.log('navigator.vibrate', !!navigator.vibrate);
   if (navigator.vibrate) {
-    console.log('vibrate if entered, navigator.vibrate= ', navigator.vibrate);
+    // console.log('vibrate if entered, navigator.vibrate= ', navigator.vibrate);
     var actualVibration = function(){
       navigator.vibrate(1000)
     }
