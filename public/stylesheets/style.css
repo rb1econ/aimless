@@ -7,6 +7,10 @@ a {
   color: #00B7FF;
 }
 
+.row {
+  width: 80%;
+}
+
 #panel {
   height: 100%;
   width: 100%;
@@ -45,19 +49,21 @@ a {
   100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-/*#myModal{
+#myModal{
   -webkit-animation-name: spaceboots;
   -webkit-animation-duration: 0.8s;
   -webkit-transform-origin:50% 50%;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-}*/
-#phone{
 }
+
 #innerModalDiv{
   border: 15px solid black;
-  border-bottom: 40px solid black;
+  border-bottom: 50px solid black;
   border-top: 30px solid black;
-  height: 540px;
+  height: 630px;
   width: 360px;
+}
+#logo{
+  margin: 0 auto;
 }

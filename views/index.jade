@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  #logo 
-    img(src='../images/Aimless.svg', alt='Aimless', height="134", width="483")
-  p Welcome to #{title}! Simply 
+  .row
+    #logo
+      img(src='../images/Aimless.svg', alt='Aimless', class="col-xs-12")
+    p.col-xs-10 Going for an Aimless Walk? Simply select the time you need to be back by and we'll let you know when and how to go back.
   .row
     // div.col-sm-12 Sign in to store your walks and see how much area you've explored!
     //   form(action="/auth/login", method="post")
@@ -13,7 +14,7 @@ block content
     div#panel.col-xs-12
       input(type="time", id="timeToReturn", required)
       input(type='checkbox', id='newDest')
-      |  A new place
+      |  I would like to end up at new place
       br
       input(type="text", placeholder="Your Destination...", id="theirNewDest")
       button(class='btn btn-success col-sm-12', id="iAmWalking") Going for an Aimless Walk?
@@ -28,5 +29,11 @@ block content
               span(aria-hidden='true') ×
             h4#myModalLabel.modal-title This is your phone:
           .modal-body
-            | IT'S VIBRATING
+            | IT'S VIBRATING :)
+            br
+            br
+            | YOU'RE NO LONGER AIMLESS 
+            br
+            br
+            | TAKE AIM FOR YOUR DESTINATION!!!
           .modal-footer
