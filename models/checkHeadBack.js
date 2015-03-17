@@ -37,7 +37,7 @@ module.exports = function(data, callBackFxn){
     // if statement to solve problem of walks starting before midnight and ending after.
     // console.log('currentHoursMinutes B4 IF :', currentHoursMinutes);
     if(timeToReturn<=currentHoursMinutes){
-      console.log('timeToReturn B4 +=1,440 is: ', timeToReturn)
+      // console.log('timeToReturn B4 +=1,440 is: ', timeToReturn)
       timeToReturn = parseInt(timeToReturn) + 1440;
     }
 
