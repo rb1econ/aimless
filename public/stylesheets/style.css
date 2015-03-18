@@ -59,8 +59,8 @@ button label{
 }
 
 #map-canvas{
-  height: 3px;
-  width: 3px;
+  height: 330px;
+  width: 330px;
   margin: 0;
   padding: 0;
 }
@@ -200,5 +200,5 @@ input#theirNewDest{
 }
 #directionsPanel{
   color: #004363;
-  background-color: rgba(255,255,255,.35);
+  background-color: rgba(255,255,255,.45);
 }
