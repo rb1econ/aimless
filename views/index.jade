@@ -5,9 +5,8 @@ block content
     .row
       #logo.center-block
         img(src='../images/Aimless.svg', alt='Aimless', class="col-xs-12 logo")
-  .container
     .row
-      p.col-xs-12 Going for an Aimless Walk? Simply select the time you need to be back by and we'll let you know when and how to go back.
+      p.col-xs-12.readText Going for an aimless walk? Simply select the time you need to be back by and we'll let you know when and how to go back.
     
       // div.col-sm-12 Sign in to store your walks and see how much area you've explored!
       //   form(action="/auth/login", method="post")
@@ -16,37 +15,37 @@ block content
       //     input(class="btn btn-primary",type="submit")
     .row
       div#panel
-        input(type="time", id="timeToReturn", required, class="col-xs-4")
-        .col-xs-4.btnDiv
+        .col-xs-6
+          input(type="time", id="timeToReturn", required)
+        .col-xs-6.btnDiv
           button.btn.btn-primary#newDestBtn
             label(for="newDest") 
-              | Click to end up somewhere other
-              br
-              | than where you are now
+              | Change Destination
               input(type='checkbox', id='newDest')
-        .col-xs-4
-          input(type="text", placeholder="Your Destination...", id="theirNewDest")
-    .row  
-      button(class='btn btn-success col-xs-12', id="iAmWalking") I'm ready to get lost -maybe even lose myself!
+        .col-xs-6.slider.closed
+          input(type="text", placeholder="Your New Destination...", id="theirNewDest")
+    .row#successAndDone 
+      button(class='btn btn-success col-xs-12 theMainBtn', id="iAmWalking") I'm ready to get lost!
+    .row#mapRow
+      .col-xs-offset-1.col-xs-10
+        #map-canvas
     .row
-      #map-canvas.col-xs-12
-    .row
-      #directionsPanel.col-xs-12
+      #directionsPanel.col-xs-offset-2.col-xs-8
     .row
       #warnings_panel(style='width:100%;height:10%;text-align:center')
-      #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-        #phone.modal-dialog
-          #innerModalDiv.modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-              h4#myModalLabel.modal-title This is your phone:
-            .modal-body
-              | IT'S VIBRATING :)
-              br
-              br
-              | YOU'RE NO LONGER AIMLESS 
-              br
-              br
-              | TAKE AIM FOR YOUR DESTINATION!!!
-            .modal-footer
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      #phone.modal-dialog
+        #innerModalDiv.modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title This is your phone:
+          .modal-body
+            | IT'S VIBRATING :)
+            br
+            br
+            | YOU'RE NO LONGER AIMLESS 
+            br
+            br
+            | TAKE AIM FOR YOUR DESTINATION!!!
+          .modal-footer

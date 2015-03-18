@@ -45,7 +45,7 @@ var makeVibrate = function(){
   //   "-webkit-animation-iteration-count": "infinite",
   //   "-webkit-animation-timing-function": "linear"
   // }), 5000);
-  $('#panel').on('click', '#iAmReturning', function(){
+  $('#successAndDone').on('click', '#iAmReturning', function(){
     clearInterval(stopVibration);
     $('#iAmWalking').removeAttr("style");
     $('#iAmReturning').css("display", "none");
@@ -94,13 +94,13 @@ var everyMinute = function(){
     }
 
     $.post('/directions', userDataObj, function(dataFromServer){
-      console.log('dataFromServer', dataFromServer);
+      console.log('userDataObj', userDataObj);
       if(dataFromServer){
         // make phone vibrate here:::::
         initialize();
         makeVibrate();
         clearInterval(refreshIntervalId);
-        $('#panel').prepend('<button class="btn btn-primary" id="iAmReturning"> (: I am returning :)</button>');
+        $('#successAndDone').prepend('<button class="btn btn-primary col-xs-12 theMainBtn" id="iAmReturning">I am returning :)</button>');
 
         console.log('Time to Return!!!!!!', dataFromServer);
       }
@@ -130,11 +130,17 @@ var callEveryMinute = function(){
 
 $('#newDest').change(function(){
   $('#theirNewDest').toggle();
+  // if(!!$('#theirNewDest').attr("display", "none")){
+  //   $('#theirNewDest').show().animate(500);
+  // }
+  // else{$('#theirNewDest').css("display", "none")}
   // console.log('change happened on checkbox');
   // console.log(timeToReturn);
 });
 
 $('#iAmWalking').on('click', function(e){
+  $('#directionsPanel').html('');
+  $('#map-canvas').html('');
   e.preventDefault();
   $(this).css("display", "none");
 
@@ -199,6 +205,7 @@ function initialize() {
 
   // Instantiate an info window to hold step text.
   stepDisplay = new google.maps.InfoWindow();
+
   directionsDisplay.setPanel(document.getElementById('directionsPanel'));
   calcRoute();
 }

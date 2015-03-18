@@ -1,22 +1,29 @@
 body {
   padding: 50px;
-  font: 14px "Comic-Sans", serif;
+  font-size: 17px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   text-align: center;
 }
 
-a {
-  color: #00B7FF;
+p.readText {
+  font-size: 1.2em;
 }
+button {
+  font-size: 24px;
+}
+
 #panel button label{
   cursor: pointer;
-  /*float: left;*/
+  font-weight: normal;
   display: block;
-  padding: 5px 10px;
+  padding: 9.5px 0;
   margin: 0;
 }
 #panel button {
+  font-size: 1.2em;
   vertical-align: middle;
   text-align: center;
+  border: 0;
 }
 
 #panel button label input {
@@ -24,11 +31,7 @@ a {
 }
 
 .row {
-  
-}
-
-.btnDiv{
-
+  padding: 15px 0;
 }
 
 #panel {
@@ -39,15 +42,12 @@ a {
 }
 
 #map-canvas{
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 600px;
   margin: 0;
   padding: 0;
 }
 
-#theirNewDest{
-  display: none;
-}
 #warnings_panel{
   display: none;
 }
@@ -87,18 +87,73 @@ a {
 .logo{
   margin: 0 auto;
 }
-#newDest{
-  height: 30px;
-  width: 30px;
-}
-
 input{
-  font-size: 30px;
+  border: 1px solid #2e6da4;
+  border-radius: 4px;
 }
-
-#iAmWalking{
+input#timeToReturn{
+  font-size: 4em;
+  line-height:100%;
+}
+input#theirNewDest{
+  display: none;
+  margin: 12px 0 0 0;
+  height: 45px;
+  font-size: 1.9em;
   width: 100%;
 }
+
 #newDestBtn{
   padding: 0;
+  width: 100%;
+  height: 47px;
+  font-size: 1.2em
 }
+
+#directionsPanel{
+  text-align:left;
+}
+
+#successAndDone{
+  margin: 0;
+}
+
+.theMainBtn{
+  width: 100%;
+  font-size: 1.2em;
+  height: 93px;
+  opacity: 1;
+  animation: fadein 3s;
+  -moz-animation: fadein 3s; /* Firefox */
+  -webkit-animation: fadein 3s; /* Safari and Chrome */
+  -o-animation: fadein 3s; /* Opera */
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
