@@ -130,6 +130,7 @@ var callEveryMinute = function(){
 
 $('#newDest').change(function(){
   $('#theirNewDest').toggle();
+  // $('#theirNewDest').animate();
   // if(!!$('#theirNewDest').attr("display", "none")){
   //   $('#theirNewDest').show().animate(500);
   // }
@@ -139,6 +140,7 @@ $('#newDest').change(function(){
 });
 
 $('#iAmWalking').on('click', function(e){
+  console.log('theirNewDest:::', $('#theirNewDest').val().length);
   $('#directionsPanel').html('');
   $('#map-canvas').html('');
   e.preventDefault();
@@ -146,7 +148,7 @@ $('#iAmWalking').on('click', function(e){
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      if($('#newDest:checked').val()){specifiedOrDefaultDestination = $('#theirNewDest').val()
+      if($('#newDest:checked').val()){specifiedOrDefaultDestination = $('#theirNewDest').val();
       }
       else{specifiedOrDefaultDestination = '('+position.coords.latitude+', '+ position.coords.longitude+')';
       }

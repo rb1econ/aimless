@@ -1,10 +1,19 @@
 body {
-  padding: 50px;
+  padding-top: 70px;
   font-size: 17px;
   font-family: "Comic Sans MS", cursive, sans-serif;
   text-align: center;
+  /*background-color: #C44E18;*/
+  background: url('/images/JakeGivenSunsetPark.jpeg') no-repeat, 
+              url('/images/JakeGivenSunsetParkUpside.jpeg') no-repeat;
+  background-position: 100% 0;
 }
-
+.jumbotron.topTron {
+  background-color: rgba(0,0,0,0);
+}
+.jumbotron.bottomTron{
+  background-color: rgba(0,0,0,0);
+}
 p.readText {
   font-size: 1.2em;
 }
@@ -92,7 +101,7 @@ input{
   border-radius: 4px;
 }
 input#timeToReturn{
-  font-size: 4em;
+  font-size: 3.4em;
   line-height:100%;
 }
 input#theirNewDest{
@@ -157,3 +166,21 @@ input#theirNewDest{
     }
 }
 
+.btn-success{
+  background-color: #597533;
+  border-color: transparent;
+}
+.btn-success:hover{
+  background-color: #4E662C;
+}
+
+.btn-primary{
+  background-color: #61B594;
+  border-color: transparent;
+}
+.btn-primary:hover{
+  background-color: #559E81;
+}
+/*#logo img {
+  background-color: #E5DEA5;
+*/
