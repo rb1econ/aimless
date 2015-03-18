@@ -1,27 +1,35 @@
 body {
-  padding-top: 70px;
+  padding-top: 60px;
   font-size: 17px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: center;
-  /*background-color: #C44E18;*/
-  background: url('/images/JakeGivenSunsetPark.jpeg') no-repeat, 
-              url('/images/JakeGivenSunsetParkUpside.jpeg') no-repeat;
-  background-position: 100% 0;
+  /*background-color: #402300;*/
+  background: url('/images/JakeGivenSunsetPark.jpeg') 65% 0 no-repeat, 
+              url('/images/JakeGivenSunsetParkUpside.jpeg') 0 1534px no-repeat;
+  /*background-position: 65% 0;*/
 }
-.jumbotron.topTron {
+/*.jumbotron*/
+.topTron {
   background-color: rgba(0,0,0,0);
+  margin-bottom: 0;
 }
-.jumbotron.bottomTron{
+/*.jumbotron*/
+.bottomTron{
   background-color: rgba(0,0,0,0);
+  padding-top: 0;
 }
 p.readText {
   font-size: 1.2em;
+  color: #004363;
+  background-color: rgba(255,255,255,.35);
+  padding: 15px;
+  margin: 0;
 }
 button {
   font-size: 24px;
 }
 
-#panel button label{
+button label{
   cursor: pointer;
   font-weight: normal;
   display: block;
@@ -35,12 +43,12 @@ button {
   border: 0;
 }
 
-#panel button label input {
+.row button label input {
   display: none;
 }
 
 .row {
-  padding: 15px 0;
+  padding-bottom: 15px;
 }
 
 #panel {
@@ -51,8 +59,8 @@ button {
 }
 
 #map-canvas{
-  height: 600px;
-  width: 600px;
+  height: 3px;
+  width: 3px;
   margin: 0;
   padding: 0;
 }
@@ -95,21 +103,54 @@ button {
 }
 .logo{
   margin: 0 auto;
+  opacity: .9;
 }
 input{
   border: 1px solid #2e6da4;
-  border-radius: 4px;
+  opacity: 0.7;
 }
 input#timeToReturn{
-  font-size: 3.4em;
+  font-size: 3.5em;
   line-height:100%;
 }
 input#theirNewDest{
-  display: none;
-  margin: 12px 0 0 0;
+  /*display: none;*/
+  /*margin: 12px 0 0 0;*/
   height: 45px;
   font-size: 1.9em;
   width: 100%;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -o-animation: fadein 1s; /* Opera */
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: .7; }
+  }
+  @-moz-keyframes fadein { /* Firefox */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:.7;
+      }
+  }
+  @-webkit-keyframes fadein { /* Safari and Chrome */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:.7;
+      }
+  }
+  @-o-keyframes fadein { /* Opera */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity: .7;
+      }
 }
 
 #newDestBtn{
@@ -123,64 +164,41 @@ input#theirNewDest{
   text-align:left;
 }
 
-#successAndDone{
+/*#successAndDone{
   margin: 0;
-}
+  padding: 0;
+}*/
 
 .theMainBtn{
   width: 100%;
   font-size: 1.2em;
-  height: 93px;
+  height: 72px;
   opacity: 1;
-  animation: fadein 3s;
-  -moz-animation: fadein 3s; /* Firefox */
-  -webkit-animation: fadein 3s; /* Safari and Chrome */
-  -o-animation: fadein 3s; /* Opera */
 }
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@-moz-keyframes fadein { /* Firefox */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-o-keyframes fadein { /* Opera */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.btn-success{
-  background-color: #597533;
+.btn{
+  opacity: 0.7;
   border-color: transparent;
+  border-radius: 0;
+  background-color: #004363;
+}
+/*.btn-success{
+  background-color: #004363;
 }
 .btn-success:hover{
-  background-color: #4E662C;
+  background-color: #004363;
 }
 
 .btn-primary{
-  background-color: #61B594;
-  border-color: transparent;
+  background-color: #004363;
+  
 }
 .btn-primary:hover{
-  background-color: #559E81;
+  background-color: #004363;
+}*/
+.row.hiddenInput{
+  display: none;
 }
-/*#logo img {
-  background-color: #E5DEA5;
-*/
+#directionsPanel{
+  color: #004363;
+  background-color: rgba(255,255,255,.35);
+}

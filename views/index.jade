@@ -45,15 +45,15 @@ block content
             a(href='./')
               | Fixed top 
               span.sr-only (current)
-  .jumbotron.topTron
+  .topTron
     .container
       .row
         #logo.center-block
           img(src='../images/Aimless.svg', alt='Aimless', class="col-xs-12 logo", id="aimlessLogo")
-  .jumbotron.bottomTron
+  .bottomTron
     .container
       .row
-        p.col-xs-12.readText Going for an aimless walk? Simply select the time you need to be back by and we'll let you know when and how to go back.
+        p.col-xs-12.readText Going for an aimless walk? Simply select the time you need to be back by and we'll let you know when and how to get back.
       
         // div.col-sm-12 Sign in to store your walks and see how much area you've explored!
         //   form(action="/auth/login", method="post")
@@ -61,21 +61,22 @@ block content
         //     input(type="password", name="password", placeholder="Password")
         //     input(class="btn btn-primary",type="submit")
       .row
-        div#panel
-          .col-xs-12
-            input(type="time", id="timeToReturn", required)
-          .col-xs-6.btnDiv
+        .col-xs-12
+          input(type="time", id="timeToReturn", required)
+      .row    
+        .col-xs-12.btnDiv
             button.btn.btn-primary#newDestBtn
               label(for="newDest") 
                 | Change Destination
                 input(type='checkbox', id='newDest')
-          .col-xs-6.slider.closed
+      .row.hiddenInput
+        .col-xs-12
             input(type="text", placeholder="Your New Destination...", id="theirNewDest")
       .row#successAndDone 
         button(class='btn btn-success col-xs-12 theMainBtn', id="iAmWalking") I'm ready to get lost!
   .container
     .row#mapRow
-      .col-xs-offset-1.col-xs-10
+      .col-xs-12
         #map-canvas
     .row
       #directionsPanel.col-xs-offset-2.col-xs-8

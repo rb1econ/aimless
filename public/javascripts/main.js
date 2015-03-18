@@ -129,7 +129,7 @@ var callEveryMinute = function(){
 // });
 
 $('#newDest').change(function(){
-  $('#theirNewDest').toggle();
+  $('.hiddenInput').toggle();
   // $('#theirNewDest').animate();
   // if(!!$('#theirNewDest').attr("display", "none")){
   //   $('#theirNewDest').show().animate(500);
