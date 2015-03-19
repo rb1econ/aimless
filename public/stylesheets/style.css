@@ -112,6 +112,8 @@ input{
 input#timeToReturn{
   font-size: 3.5em;
   line-height:100%;
+  padding:0;
+  margin-left: 1px;
 }
 input#theirNewDest{
   /*display: none;*/
@@ -200,5 +202,14 @@ input#theirNewDest{
 }
 #directionsPanel{
   color: #004363;
-  background-color: rgba(255,255,255,.45);
+  background-color: rgba(255,255,255, 0.45);
+}
+#iAmWalking{
+  background-color: #27ae60;
+}
+#iAmReturning{
+  background-color: #c0392b;
+}
+#whileWalking{
+  background-color: #C46200;
 }

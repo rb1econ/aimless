@@ -47,8 +47,8 @@ var makeVibrate = function(){
   // }), 5000);
   $('#successAndDone').on('click', '#iAmReturning', function(){
     clearInterval(stopVibration);
-    $('#iAmWalking').removeAttr("style");
-    $('#iAmReturning').css("display", "none");
+    $('#iAmWalking').css("display", "inline-block");
+    $('#iAmReturning').remove();
     console.log('iAmReturning btn worked!!');
     // vibrating = false;
   });
@@ -100,6 +100,7 @@ var everyMinute = function(){
         initialize();
         makeVibrate();
         clearInterval(refreshIntervalId);
+        $('#whileWalking').remove();
         $('#successAndDone').prepend('<button class="btn btn-primary col-xs-12 theMainBtn" id="iAmReturning">I am returning :)</button>');
 
         console.log('Time to Return!!!!!!', dataFromServer);
@@ -140,11 +141,13 @@ $('#newDest').change(function(){
 });
 
 $('#iAmWalking').on('click', function(e){
-  console.log('theirNewDest:::', $('#theirNewDest').val().length);
+  $(this).css("display", "none");
+
+  $('#successAndDone').prepend('<button class="btn btn-primary col-xs-12 theMainBtn" id="whileWalking">Have fun exploring!</button>')
+  // console.log('theirNewDest:::', $('#theirNewDest').val().length);
   $('#directionsPanel').html('');
   $('#map-canvas').html('');
   e.preventDefault();
-  $(this).css("display", "none");
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
