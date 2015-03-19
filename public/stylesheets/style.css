@@ -87,6 +87,7 @@ button label{
 }
 
 #myModal{
+
   -webkit-animation-name: spaceboots;
   -webkit-animation-duration: 0.8s;
   -webkit-transform-origin:50% 50%;
@@ -98,8 +99,8 @@ button label{
   border: 15px solid black;
   border-bottom: 50px solid black;
   border-top: 30px solid black;
-  height: 630px;
-  width: 360px;
+  height: 615px;
+  width: 330px;
 }
 .logo{
   margin: 0 auto;
@@ -119,7 +120,7 @@ input#theirNewDest{
   /*display: none;*/
   /*margin: 12px 0 0 0;*/
   height: 45px;
-  font-size: 1.9em;
+  font-size: 1.6em;
   width: 100%;
     animation: fadein 1s;
     -moz-animation: fadein 1s; /* Firefox */
