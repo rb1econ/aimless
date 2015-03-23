@@ -21,30 +21,24 @@ var stopVibration;
 
 
 var makeVibrate = function(){
-  // navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-  // console.log('navigator.vibrate', !!navigator.vibrate);
-  // if (navigator.vibrate) {
-  //   // console.log('vibrate if entered, navigator.vibrate= ', navigator.vibrate);
-  //   var actualVibration = function(){
-  //     navigator.vibrate(1000)
-  //   }
-  //   stopVibration = setInterval(actualVibration, 1500);
-  // }
-  // else{
-    // var visualVibration = function(){
-    //   // $('#panel').prepend('<button class="btn btn-danger">Vibration Simulation ;)</button>')
-    //   alert('Yo, it\'s time to head back!!');
-    // };
-    // stopVibration = setInterval(visualVibration, 2000);
-  // }
-  $('#myModal').modal();
-  // setTimeout($('#myModal').css({
-  //   "-webkit-animation-name": "spaceboots",
-  //   "-webkit-animation-duration": "0.8s",
-  //   "-webkit-transform-origin":"50% 50%",
-  //   "-webkit-animation-iteration-count": "infinite",
-  //   "-webkit-animation-timing-function": "linear"
-  // }), 5000);
+  navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+  console.log('navigator.vibrate', !!navigator.vibrate);
+  if (navigator.vibrate) {
+    console.log('vibrate if entered, navigator.vibrate= ', navigator.vibrate);
+    var actualVibration = function(){
+      navigator.vibrate(1000)
+    }
+    stopVibration = setInterval(actualVibration, 1500);
+  }
+  else{
+    var visualVibration = function(){
+      // $('#panel').prepend('<button class="btn btn-danger">Vibration Simulation ;)</button>')
+      alert('Yo, it\'s time to head back!!');
+    };
+    stopVibration = setInterval(visualVibration, 2000);
+  }
+  // $('#myModal').modal();
+  
   $('#successAndDone').on('click', '#iAmReturning', function(){
     clearInterval(stopVibration);
     $('#iAmWalking').css("display", "inline-block");
