@@ -21,12 +21,16 @@ body {
 .clock{
   overflow: hidden;
 }
-p.readText {
+.readText {
   font-size: 1.2em;
   color: #004363;
   background-color: rgba(255,255,255,.35);
   padding: 15px;
   margin: 0;
+}
+.instruction{
+  font-size: 0.5em;
+  margin-top: 5px;
 }
 button {
   font-size: 24px;
