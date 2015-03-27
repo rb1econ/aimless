@@ -18,8 +18,10 @@ var loadTheMap;
 var start;
 var stopVibration;
 
-
-
+$(document).on('ready', function(){
+  var theTime = new Date();
+  $('#timeToReturn').attr("placeholder", theTime);
+});
 var makeVibrate = function(){
   navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   console.log('navigator.vibrate', !!navigator.vibrate);
@@ -162,6 +164,7 @@ $('#iAmWalking').on('click', function(e){
   // reassign specifiedOrDefaultDestination if box is checked.
 
   var usersTime = $('#timeToReturn').val().split(':');
+  console.log($('#timeToReturn').val());
   var usersHours = parseInt(usersTime[0]);
   var usersMinutes = parseInt(usersTime[1]);
   timeToReturn = parseInt(usersTime[0])*60 + parseInt(usersTime[1]);

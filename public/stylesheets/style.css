@@ -18,6 +18,9 @@ body {
   background-color: rgba(0,0,0,0);
   padding-top: 0;
 }
+.clock{
+  overflow: hidden;
+}
 p.readText {
   font-size: 1.2em;
   color: #004363;
@@ -119,6 +122,7 @@ input#timeToReturn{
   line-height:100%;
   padding:0;
   margin-left: 1px;
+  max-width: 100%;
 }
 input#theirNewDest{
   /*display: none;*/
