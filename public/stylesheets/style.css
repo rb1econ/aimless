@@ -8,6 +8,12 @@ body {
               url('/images/JakeGivenSunsetParkUpside.jpeg') 0 1534px no-repeat;
   /*background-position: 65% 0;*/
 }
+.dropLogin{
+  padding: 5px 25px;  
+}
+.dropLogin button{
+  color: #FFFFFF;
+}
 /*.jumbotron*/
 .topTron {
   background-color: rgba(0,0,0,0);
