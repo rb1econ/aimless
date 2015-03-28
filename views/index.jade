@@ -19,7 +19,7 @@ block content
               span.caret
             ul.dropdown-menu(role='menu')
               li.dropLogin
-                h3 Past Users
+                h3 Already Aimless?
               li.dropLogin
                 form
                   .form-group
@@ -30,10 +30,18 @@ block content
                   button.btn.btn-default(type='submit') Submit
               li.divider
               //- li.dropdown-header Nav header
-              li
-                a(href='#') Separated link
-              li
-                a(href='#') One more separated link
+              li.dropLogin
+                h3 Want to be Aimless?
+              li.dropLogin
+                form
+                  .form-group
+                    label(for="enterEmail1") Your email
+                    input(type="email", placeholder="email", class="form-control", id="enterEmail1")
+                    label(for="enterPassword1") A password
+                    input(type="password", class="form-control", id="enterPassword1")
+                    label(for="enterPassword2") Confirm
+                    input(class="form-control", id="enterPassword2", type="password")
+                  button.btn.btn-default(type='submit') Submit
           li
             a(href='#') Past Aimlessness
         ul.nav.navbar-nav.navbar-right
@@ -42,9 +50,9 @@ block content
               | Walk 
               span.sr-only (current)
           li
-            a(href='#') Bike
+            a(href='#') Bike (coming soon!)
           li
-            a(href='#') Moped
+            a(href='#') Moped (coming soon!)
   .topTron
     .container
       .row
