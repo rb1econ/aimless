@@ -22,13 +22,13 @@ block content
                 li.dropLogin
                   h3 Already Aimless?
                 li.dropLogin
-                  form(role='form', action="/login",method="post")
+                  form(role='form', id="loginForm")
                     .form-group
                       label(for="enterEmail") Your email
                       input(type="email", placeholder="email", class="form-control", id="enterEmail")
                       label(for="enterPassword") A password
-                      input(type="password", class="form-control", id="enterPassword")
-                    button.btn.btn-default(type='submit') Submit
+                      input(type="password", class="form-control", id="enterPassword", placeholder='Password')
+                    button.btn.btn-default(type='submit', id="loginSubmit") Submit
                     &nbsp;
                     a(href='/')
                       button.btn.btn-primary(type="button") Cancel
@@ -37,15 +37,18 @@ block content
                 li.dropLogin
                   h3 Want to be Aimless?
                 li.dropLogin
-                  form(role='form', action="/register",method="post")
+                  form(role='form', id="registerForm")
                     .form-group
                       label(for="enterEmail1") Your email
                       input(type="email", placeholder="email", class="form-control", id="enterEmail1")
                       label(for="enterPassword1") A password
-                      input(type="password", class="form-control", id="enterPassword1")
+                      input(type="password", class="form-control", id="enterPassword1", placeholder='Password')
                       label(for="enterPassword2") Confirm
-                      input(class="form-control", id="enterPassword2", type="password")
-                    button.btn.btn-default(type='submit') Submit
+                      input(class="form-control", id="enterPassword2", type="password", placeholder='Confirm')
+                    button.btn.btn-default(type='submit', id="registerSubmit") Submit
+                    &nbsp;
+                    a(href='/')
+                      button.btn.btn-primary(type="button") Cancel
           if (user)
             li
               a(href='#') #{user.username}'s Past Aimlessness

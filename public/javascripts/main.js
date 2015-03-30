@@ -18,10 +18,29 @@ var loadTheMap;
 var start;
 var stopVibration;
 
-$(document).on('ready', function(){
-  var theTime = new Date();
-  $('#timeToReturn').attr("placeholder", theTime);
-});
+// AJAX REQUESTS for /login and /register and /logout
+
+$('#registerSubmit').on('click', function(e){
+  e.preventDefault();
+  $.post('/register', $("#registerForm").serialize(), function(dataFromServer){
+    console.log('register Response: ', dataFromServer);
+  });
+
+  // $.ajax({
+  //   type: "POST",
+  //   url: "/register",
+  //   data: $("#registerForm").serialize(),
+  //   success: function(dataFromServer){
+  //     console.log('register Response: ', dataFromServer)
+  //   }
+  // })
+})
+
+
+// $(document).on('ready', function(){
+//   var theTime = new Date();
+//   $('#timeToReturn').attr("placeholder", theTime);
+// });
 var makeVibrate = function(){
   navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   console.log('navigator.vibrate', !!navigator.vibrate);
