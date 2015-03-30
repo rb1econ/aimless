@@ -16,12 +16,12 @@ var cookieParser = require('cookie-parser');
 // Flash allows us to store quick one-time-use messages
 // between views that are removed once they are used.
 // Useful for error messages.
-var flash = require('connect-flash');
+// var flash = require('connect-flash');
 
 // Load in the base passport library so we can inject its hooks
 // into express middleware.
 var passport = require('passport');
-
+var LocalStrategy = require('passport-local').Strategy;
 // Load in our passport configuration that decides how passport
 // actually runs and authenticates
 var passportConfig = require('./config/passport');
