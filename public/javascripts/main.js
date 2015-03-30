@@ -115,7 +115,7 @@ var everyMinute = function(){
 };
 
 var callEveryMinute = function(){
-  refreshIntervalId = setInterval(everyMinute, 120000);
+  refreshIntervalId = setInterval(everyMinute, 3000);
   // console.log('interval ID', refreshIntervalId);
 };
 
